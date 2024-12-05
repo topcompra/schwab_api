@@ -1,74 +1,87 @@
-How to Use the Project - Future Authomated backtester
+# How to Use - Schwab OAuth2
 
+## Retrieves price_history as a python dictionary
 
-This document provides a step-by-step guide on how to set up and use the project. 
+Note: there has to be a great library out there but i, unfortunately did not find it this straight-forward to use.
+
 
 Follow these instructions to get started with the project and customize it to your needs.
 
 
-Step 1: Fork the Project
+## Step 1: Fork the Project
+
 Navigate to the project's repository on GitHub.
 
 Click the "Fork" button in the top-right corner to create a personal copy of the repository in your GitHub account.
 
 
-Step 2: Clone the Repository Locally
-Open your terminal or command prompt.
-Clone the repository to your local machine using the following command:
+## Step 2: Clone the Repository Locally
+
+### Open your terminal or command prompt.
+
+### Clone the repository to your local machine using the following command:
 
 BASH
 
 git clone https://github.com/yourusername/your-repo-name.git
 
 
-Navigate into the cloned directory:
+### Navigate into the cloned directory:
 
 BASH
 
 cd your-repo-name
 
 
-Step 3: Set Up the Virtual Environment
-Create a new directory for your virtual environment:
+## Step 3: Set Up the Virtual Environment
+
+### Create a new directory for your virtual environment:
 
 BASH
 
 mkdir .venv
-Create a virtual environment within this directory:
+
+### Create a virtual environment within this directory:
 
 BASH
 
 python -m venv .venv
 
-Step 4: Configure Environment Variables
-Within the .venv directory, create a file to store your environment variables (e.g., .env).
-Add the following variables to the file:
+## Step 4: Configure Environment Variables
+
+Within the .venv directory, create a file to store your environment variables ideally called .env if you do not want to overwrite anything. 
+
+### Add the following variables to the file:
 
 client_id=your_client_id
 client_secret=your_client_secret
 callback_url=your_callback_url
 Step 5: Install Requirements
 
-Activate your virtual environment:
+### Activate your virtual environment:
 
 On Windows:
 
 BASH
 
 .venv\Scripts\activate
+
 On macOS/Linux:
+
 BASH
 
 source .venv/bin/activate
-Install the required packages using the requirements.txt file:
+
+### Install the required packages using the requirements.txt file:
 
 BASH
 
 pip install -r requirements.txt
 
 
-Step 6: Run the Main Script
-Execute the main script to display data in the command line:
+## Step 6: Run the Main Script
+
+### Execute the main script to display data in the command line(to check if everything works):
 
 BASH
 
@@ -77,8 +90,9 @@ python main_daily_checker.py
 This will output the data as a dictionary in the command line.
 
 
-Step 7: Customize Configuration
-Each file in the project has a similar structure where you can find and modify the following variables:
+## Step 7: Customize Configuration
+
+### Each file in the project has a similar structure where you can find and modify the following variables:
 ```
 Python
 
@@ -92,11 +106,12 @@ default_config = {
     "needExtendedHoursData": True
 }
 ```
+
 Update these variables with your desired timeframes and symbols/tickers. To execute any file just cd to the project_folder you forked and just (example: in cmd: py daily_main_checker.py) will execute the files. 
 
-Last Step: Extract Data for Personal Use
+## Last Step: Extract Data for Personal Use
 
-To extract data for your personal use using the provided code snippets, follow these steps:
+### To extract data for your personal use using the provided code snippets, follow these steps:
 
 Create a file in the same project_folder where daily_main_checker.py is and copy-paste the following code snippet: 
 
@@ -153,6 +168,13 @@ price_history = {
     ]
 }
 ```
+
+## Contact
+### Francisco Gonzalez - fjgazocar@gmail.com
+#### https://topcompra.github.io/fjgazocar/
+
+
+
 
 Note:
 Authentication and data cleaning are already handled within the provided code.
