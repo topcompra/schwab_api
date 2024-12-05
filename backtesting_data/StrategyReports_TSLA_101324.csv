@@ -1,0 +1,46 @@
+Strategy report
+Symbol: TSLA
+Work Time: 4/3/24, 12:30 PM - 9/20/24, 11:35 AM
+
+
+Id;Strategy;Side;Amount;Price;Date/Time;Trade P/L;P/L;Position;
+1;relative_strength_backtesting(RS_WeeklyHigh_Buy);Buy to Open;100.0;$168.18;4/3/24, 12:30 PM;;$46.06;100.0;
+2;relative_strength_backtesting(RS_WeeklyLow_Sell);Sell to Close;-100.0;$167.66;4/5/24, 9:40 AM;($51.94);($51.94);0.0;
+3;relative_strength_backtesting(RS_WeeklyLow_Sell);Sell to Open;-100.0;$167.66;4/5/24, 9:40 AM;;($73.84);-100.0;
+4;relative_strength_backtesting(RS_WeeklyHigh_Buy);Buy to Close;100.0;$174.76;4/9/24, 9:45 AM;($709.94);($761.88);0.0;
+5;relative_strength_backtesting(RS_WeeklyHigh_Buy);Buy to Open;100.0;$174.76;4/9/24, 9:45 AM;;($761.88);100.0;
+6;relative_strength_backtesting(RS_WeeklyLow_Sell);Sell to Close;-100.0;$155.14;4/17/24, 9:40 AM;($1,962.00);($2,723.88);0.0;
+7;relative_strength_backtesting(RS_WeeklyLow_Sell);Sell to Open;-100.0;$155.14;4/17/24, 9:40 AM;;($2,804.55);-100.0;
+8;relative_strength_backtesting(Close_Sell);Buy to Close;100.0;$164.58;4/25/24, 11:50 AM;($944.00);($3,667.88);0.0;
+9;relative_strength_backtesting(Close_Sell);Buy to Close;100.0;$168.25;4/26/24, 2:20 PM;$0.00;($3,665.88);100.0;
+10;relative_strength_backtesting(RS_WeeklyLow_Sell);Sell to Open;-100.0;$168.25;4/26/24, 2:20 PM;;($3,667.88);0.0;
+11;relative_strength_backtesting(RS_WeeklyHigh_Buy);Buy to Open;100.0;$193.52;4/29/24, 11:40 AM;;($3,546.88);100.0;
+12;relative_strength_backtesting(RS_WeeklyLow_Sell);Sell to Close;-100.0;$184.15;5/6/24, 2:40 PM;($937.00);($4,604.88);0.0;
+13;relative_strength_backtesting(RS_WeeklyLow_Sell);Sell to Open;-100.0;$184.15;5/6/24, 2:40 PM;;($4,610.88);-100.0;
+14;relative_strength_backtesting(Close_Sell);Buy to Close;100.0;$173.79;5/9/24, 9:35 AM;$1,036.00;($3,568.88);0.0;
+15;relative_strength_backtesting(Close_Sell);Buy to Close;100.0;$171.70;5/13/24, 12:10 PM;$0.00;($3,563.12);100.0;
+16;relative_strength_backtesting(RS_WeeklyLow_Sell);Sell to Open;-100.0;$171.70;5/13/24, 12:10 PM;;($3,568.88);0.0;
+17;relative_strength_backtesting(Close_Sell);Buy to Close;100.0;$176.76;5/14/24, 12:50 PM;$0.00;($3,598.28);100.0;
+18;relative_strength_backtesting(RS_WeeklyLow_Sell);Sell to Open;-100.0;$176.76;5/14/24, 12:50 PM;;($3,568.88);0.0;
+19;relative_strength_backtesting(RS_WeeklyHigh_Buy);Buy to Open;100.0;$177.86;5/14/24, 3:40 PM;;($3,581.88);100.0;
+20;relative_strength_backtesting(RS_WeeklyLow_Sell);Sell to Close;-100.0;$183.29;6/13/24, 3:15 PM;$542.50;($3,026.38);0.0;
+21;relative_strength_backtesting(RS_WeeklyLow_Sell);Sell to Open;-100.0;$183.29;6/13/24, 3:15 PM;;($2,993.88);-100.0;
+22;relative_strength_backtesting(Close_Sell);Buy to Close;100.0;$197.73;6/28/24, 12:10 PM;($1,444.51);($4,470.89);0.0;
+23;relative_strength_backtesting(RS_WeeklyHigh_Buy);Buy to Open;100.0;$264.89;7/9/24, 2:20 PM;;($4,539.88);100.0;
+24;relative_strength_backtesting(RS_WeeklyLow_Sell);Sell to Close;-100.0;$220.00;7/24/24, 1:55 PM;($4,489.00);($8,959.89);0.0;
+25;relative_strength_backtesting(RS_WeeklyLow_Sell);Sell to Open;-100.0;$220.00;7/24/24, 1:55 PM;;($8,894.86);-100.0;
+26;relative_strength_backtesting(Close_Sell);Buy to Close;100.0;$222.65;7/30/24, 2:10 PM;($265.01);($9,224.90);0.0;
+27;relative_strength_backtesting(Close_Sell);Buy to Close;100.0;$208.12;8/2/24, 11:15 AM;$0.00;($9,206.40);100.0;
+28;relative_strength_backtesting(RS_WeeklyLow_Sell);Sell to Open;-100.0;$208.12;8/2/24, 11:15 AM;;($9,224.90);0.0;
+29;relative_strength_backtesting(Close_Sell);Buy to Close;100.0;$214.52;9/6/24, 1:55 PM;$0.00;($9,259.90);100.0;
+30;relative_strength_backtesting(RS_WeeklyLow_Sell);Sell to Open;-100.0;$214.52;9/6/24, 1:55 PM;;($9,224.90);0.0;
+31;relative_strength_backtesting(Close_Sell);Buy to Close;100.0;$226.67;9/16/24, 4:05 PM;$0.00;($9,251.61);100.0;
+32;relative_strength_backtesting(RS_WeeklyLow_Sell);Sell to Open;-100.0;$226.67;9/16/24, 4:05 PM;;($9,224.90);0.0;
+33;relative_strength_backtesting(RS_WeeklyHigh_Buy);Buy to Open;100.0;$239.38;9/20/24, 11:35 AM;;($9,252.89);100.0;
+
+
+Max trade P/L: $1,036.00;
+
+Total P/L: ($9,224.90);
+
+Total order(s): 16;

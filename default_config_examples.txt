@@ -1,0 +1,41 @@
+# EXAMPLES OF CONFIG FOR PERIODS
+
+'''
+Monthly Candles for the Last 5 Years
+
+default_config = {
+    "periodType": "year",
+    "period": 5,
+    "frequencyType": "monthly",
+    "frequency": 1,
+    "needExtendedHoursData": False
+}
+
+'''
+
+'''
+Daily Candles for the Last Month
+
+
+default_config = {
+    "periodType": "month",
+    "period": 1,
+    "frequencyType": "daily",
+    "frequency": 1,
+    "needExtendedHoursData": False
+}
+
+'''
+
+'''
+Intraday (5-Minute Candles for 1 Day)
+
+default_config = {
+    "periodType": "day",
+    "period": 1,
+    "frequencyType": "minute",
+    "frequency": 5,
+    "needExtendedHoursData": True
+}
+
+'''
