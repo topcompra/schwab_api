@@ -1,9 +1,16 @@
 How to Use the Project - Future Authomated backtester
-This document provides a step-by-step guide on how to set up and use the project. Follow these instructions to get started with the project and customize it to your needs.
+
+
+This document provides a step-by-step guide on how to set up and use the project. 
+
+Follow these instructions to get started with the project and customize it to your needs.
+
 
 Step 1: Fork the Project
 Navigate to the project's repository on GitHub.
+
 Click the "Fork" button in the top-right corner to create a personal copy of the repository in your GitHub account.
+
 
 Step 2: Clone the Repository Locally
 Open your terminal or command prompt.
@@ -12,10 +19,15 @@ Clone the repository to your local machine using the following command:
 BASH
 
 git clone https://github.com/yourusername/your-repo-name.git
+
+
 Navigate into the cloned directory:
+
 BASH
 
 cd your-repo-name
+
+
 Step 3: Set Up the Virtual Environment
 Create a new directory for your virtual environment:
 
@@ -27,6 +39,7 @@ Create a virtual environment within this directory:
 BASH
 
 python -m venv .venv
+
 Step 4: Configure Environment Variables
 Within the .venv directory, create a file to store your environment variables (e.g., .env).
 Add the following variables to the file:
@@ -37,7 +50,9 @@ callback_url=your_callback_url
 Step 5: Install Requirements
 
 Activate your virtual environment:
+
 On Windows:
+
 BASH
 
 .venv\Scripts\activate
@@ -46,15 +61,22 @@ BASH
 
 source .venv/bin/activate
 Install the required packages using the requirements.txt file:
+
 BASH
 
 pip install -r requirements.txt
+
+
 Step 6: Run the Main Script
 Execute the main script to display data in the command line:
+
 BASH
 
 python main_daily_checker.py
+
 This will output the data as a dictionary in the command line.
+
+
 Step 7: Customize Configuration
 Each file in the project has a similar structure where you can find and modify the following variables:
 ```
