@@ -5,7 +5,18 @@
 Note: there has to be a great library out there but i, unfortunately did not find it this straight-forward to use.
 
 
-Follow these instructions to get started with the project and customize it to your needs.
+Follow these instructions to get etfs and ticker data from schwab under this format: 
+
+```
+price_history = {
+    "candles": [
+        {"open": 100.5, "close": 102.3, "high": 103.0, "low": 100.0},
+        {"open": 102.3, "close": 101.8, "high": 103.5, "low": 101.0},
+        {"open": 101.8, "close": 104.0, "high": 104.5, "low": 101.5},
+        # More candles can follow...
+    ]
+}
+```
 
 
 ## Step 1: Fork the Project
