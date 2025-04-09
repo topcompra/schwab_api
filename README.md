@@ -5,26 +5,7 @@ Feel free to use or extend as you wish.
 
 price_history will be a dict. looking like this:
 
-```
-price_history = {
-                  "candles": [
-                    {
-                      "open": 2098.27,
-                      "high": 2109.98,
-                      "low": 2091.05,
-                      "close": 2107.96,
-                      "volume": 0,
-                      "datetime": 1429678800000
-                    },
-                    ...
-                  ],
-                  "empty": false,
-                  "symbol": "$SPX",
-                  "type": "price"
-              }
-
-```
-or candles as a list[dict] like this:
+candles as a list[dict] like this:
 ```
 candles = [
     {
@@ -52,7 +33,7 @@ candles = [
 
 ### 1. Create .env in root project_folder and add
 ```
-  client_id = "" # your cient_id found in
+  client_id = "" # your cient_id 
   client_secret = "" # your secret_key 
 ```
 
@@ -62,38 +43,42 @@ candles = [
 #### * Refer to default_config_examples.txt for examples on how to customize CONFIG to other timeframes.
 
 ```bash
-from utils.init_api import init_api
 
-SYMBOL = "$SPX"
-CONFIG = {
+from utils.fetch import fetch_price_history
+
+def main():
+    candles = fetch_price_history()
+    if not candles:
+        return
+
+    # === Your logic below ===
+    # analyze_structure(candles)
+    # plot_chart(candles)
+
+if __name__ == "__main__":
+    main()
+
+"you can go to config folder settings.py and update symbol and config or pass them as variables to 
+fetch_price_history(symbol = "EXMPL", config  = payload_example)"
+
+payload_example = {
     "periodType": "year",
-    "period": 10,
-    "frequencyType": "daily",
+    "period": 5,
+    "frequencyType": "monthly",
     "frequency": 1,
     "needExtendedHoursData": False
 }
 
-def main():
-    client = init_api()
-    if not client:
-        return
 
-    price_history = client.get_price_history(SYMBOL, CONFIG)
-    candles = price_history.get("candles", [])
-    print(f"Loaded {len(candles)} candles for {SYMBOL}")
-
-    # === Your custom logic below ===
-    # process_price_history(candles)
-    # analyze_structure(price_history)
-    # plot_results(candles)
-    # ...
-
-if __name__ == "__main__":
-    main()
 ```
+
+to run try py main.py which contains only that code snippet.
 
 # the only folders that matter to keep this working are core and utils.
 
 ## run script at root (project_folder)
 
-python -m engine_or_any_folder_you_want.my_script
+python -m engine_or_any_folder_you_want.my_script or to try the code snippet run py main.py in root dir.
+
+
+
