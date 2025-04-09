@@ -12,8 +12,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 import logging
 import sys
 import pandas as pd
-from your_module import AuthenticationManager, SchwabAPIClient  # Adjust import path
-from your_module import init_api  # Assumes you already defined this
+from utils import init_api  # Assumes you already defined this
 
 # Define the symbol you want to query
 symbol = "$SPX"
@@ -52,6 +51,7 @@ def store_price_data(symbol, price_history: dict):
         logging.info(f"✅ Data saved to {csv_file} and {xlsx_file}")
     else:
         logging.warning("⚠️ No candle data available to store.")
+
 
 if __name__ == "__main__":
     api_client = init_api()

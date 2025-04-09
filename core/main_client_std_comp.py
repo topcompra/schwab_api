@@ -5,13 +5,14 @@ import plotly.express as px
 import pandas as pd
 import logging
 from utils import init_api
-
+import sys
 
 def main():
 
     api_client = init_api()
     if api_client is None:
-        return  # Exit if auth failed
+        print("🔒 Authentication failed. Exiting.")
+        sys.exit(1)
     
 
     # Define the symbol you want to query

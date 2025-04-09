@@ -1,34 +1,15 @@
 from utils.init_api import init_api
 
-# === Config ===
-SYMBOL = "$SPX"
-CONFIG = {
-    "periodType": "year",
-    "period": 10,
-    "frequencyType": "daily",
-    "frequency": 1,
-    "needExtendedHoursData": False
-}
-
+from utils.fetch import fetch_price_history
 
 def main():
-    client = init_api()
-    if not client:
+    candles = fetch_price_history()
+    if not candles:
         return
 
-    # === API Call ===
-    price_history = client.get_price_history(SYMBOL, CONFIG)
-    candles = price_history.get("candles", [])
-    #print(candles[10])
-
-    #print(f"Loaded {len(candles)} candles for {SYMBOL}")
-
-    # === Your custom logic below ===
-    # process_price_history(candles)
-    # analyze_structure(price_history)
-    # calculate_seasonality(price_history)
-    # ...
-
+    # === Your logic below ===
+    # analyze_structure(candles)
+    # plot_chart(candles)
 
 if __name__ == "__main__":
     main()
