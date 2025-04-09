@@ -1,31 +1,27 @@
 
 import pandas as pd
 import logging
-from main_login import AuthenticationManager, client_id, client_secret
-from schwab_api_endpoints import SchwabAPIClient
-
+from utils import init_api
+import sys
 
 # Set up logging configuration
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Initialize the AuthenticationManager
-auth_manager = AuthenticationManager(client_id=client_id, client_secret=client_secret)
 
-# Initialize the SchwabAPIClient with the AuthenticationManager
-api_client = SchwabAPIClient(authentication_manager=auth_manager)
+import logging
+import sys
+import pandas as pd
+from your_module import AuthenticationManager, SchwabAPIClient  # Adjust import path
+from your_module import init_api  # Assumes you already defined this
 
 # Define the symbol you want to query
-symbol = "$SPX" 
-'''
-default_config = {
-    "periodType": "year",
-    "period": 20,  # 20 years of data
-    "frequencyType": "daily",  # weekly candles its weekly, naming is just to not make more files.
-    "frequency": 1,  # 1-week bars
-    "needExtendedHoursData": False
-}
-'''
+symbol = "$SPX"
 
+# Set up logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
+# Configuration for 15-minute bars, 180 days
 default_config = {
     "periodType": "day",
     "period": 180,
@@ -34,62 +30,46 @@ default_config = {
     "needExtendedHoursData": True
 }
 
-price_history = api_client.get_price_history(symbol=symbol, config=default_config)
-
 # Function to store price data and save as CSV and XLSX
 def store_price_data(symbol, price_history: dict):
     logging.info(f"Storing price data for symbol: {symbol}")
     
-    data = price_history
-    
-    if data and "candles" in data:
-        # Extract price data into a DataFrame
-        candles = data["candles"]
+    if price_history and "candles" in price_history:
+        candles = price_history["candles"]
         df = pd.DataFrame(candles)
         
-        # Convert timestamp to a readable date
+        # Convert timestamps to readable dates
         df['datetime'] = pd.to_datetime(df['datetime'], unit='ms')
 
-        # Save data to CSV and XLSX
+        # Output filenames
         csv_file = f"{symbol}_price_history_15min_180d.csv"
-        xlsx_file = f"{symbol}_price_history_weekly_15min_180d.xlsx"
+        xlsx_file = f"{symbol}_price_history_15min_180d.xlsx"
         
+        # Save to files
         df.to_csv(csv_file, index=False)
         df.to_excel(xlsx_file, index=False)
         
-        logging.info(f"Data saved successfully as {csv_file} and {xlsx_file}.")
+        logging.info(f"✅ Data saved to {csv_file} and {xlsx_file}")
     else:
-        logging.warning("No data available.")
-
-
-
-# Main function to execute the script
-def main(auth_manager: AuthenticationManager):
-
-
-    # Initialize the SchwabAPIClient with the AuthenticationManager
-    api_client = SchwabAPIClient(authentication_manager=auth_manager)
-
-    # Define the symbol you want to query
-    symbol = "$SPX" 
-
-    default_config = {
-        "periodType": "year",
-        "period": 20,  # 20 years of data
-        "frequencyType": "weekly",  # weekly candles its weekly, naming is just to not make more files.
-        "frequency": 1,  # 1-week bars
-        "needExtendedHoursData": False
-    }
-
-    price_history = api_client.get_price_history(symbol=symbol, config=default_config)
-    # Now you can call the method request_access_token() on the instance
-    bearer_token = auth_manager.request_access_token()["access_token"]
-    if bearer_token:
-        logging.info("Token is valid, proceeding with data retrieval.")
-        store_price_data(symbol, price_history)
-    else:
-        logging.error("Access token is invalid or has expired.")
+        logging.warning("⚠️ No candle data available to store.")
 
 if __name__ == "__main__":
-    auth_manager = AuthenticationManager(client_id=client_id, client_secret=client_secret)
-    main(auth_manager)
+    api_client = init_api()
+
+    if api_client is None:
+        print("🔒 Authentication failed. Exiting.")
+        sys.exit(1)
+
+    # Fetch price history
+    price_history = api_client.get_price_history(symbol=symbol, config=default_config)
+
+    # Check token validity before storing
+    auth_manager = api_client.authentication_manager
+    bearer_token = auth_manager.request_access_token().get("access_token")
+
+    if bearer_token:
+        logging.info("✅ Token is valid, proceeding with data retrieval.")
+        store_price_data(symbol, price_history)
+    else:
+        logging.error("❌ Access token is invalid or has expired.")
+        sys.exit(1)

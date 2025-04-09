@@ -1,0 +1,91 @@
+🔧 Potential Extensions
+1. Backtest Engine Integration
+Load historical candles and simulate trades over them using configurable strategies.
+
+Add entry/exit rules, PnL tracking, and performance metrics (win rate, profit factor, drawdown).
+
+Example:
+
+python
+Copy
+Edit
+from backtest.core import run_backtest
+results = run_backtest(candles, strategy=my_strategy)
+2. Smart Money Structure Analyzer
+Auto-detect:
+
+Break of structure (BoS)
+
+Liquidity sweeps
+
+Order blocks / fair value gaps
+
+Compression zones
+
+Could output a list of dicts with timestamps, types, and labels.
+
+This will directly power your 0DTE thesis generator later.
+
+3. Interactive Charting
+Use plotly or bokeh to create zoomable, annotated charts.
+
+Overlay VWAP, zones, entry/exit points, compression markers, etc.
+
+Example:
+
+python
+Copy
+Edit
+from charting.interactive import plot_candles_with_zones
+plot_candles_with_zones(candles, zones=detected_zones)
+4. Data Export & Snapshot Archive
+Store processed candle data + analysis as JSON/CSV.
+
+Save to disk or cloud for future replay.
+
+Optional:
+
+Timestamp folders
+
+Include snapshot of key levels or market structure
+
+5. Relative Strength Module
+Compare SPX vs sector ETFs or tickers using the same time window.
+
+Output a ranking list of strong vs weak assets.
+
+5. Relative Strength Module
+Compare SPX vs sector ETFs or tickers using the same time window.
+
+Output a ranking list of strong vs weak assets.
+
+6. Custom Query Config
+Allow the user to input:
+
+Symbol
+
+Time range
+
+Granularity
+
+🛠️ Recommended Path (in order)
+✅ Phase 1: Chart Core
+
+Build base_plot.py → chart candles, overlays, volume.
+
+Support vertical lines, shaded zones, arrows, etc.
+
+🔄 Phase 2: Annotations Layer
+
+Build annotations.py to store overlay logic.
+
+Build state_manager.py to persist annotations.
+
+⏱ Phase 3: Aggregation
+
+Add aggregators.py to transform candles on-the-fly (e.g., 1-min → 5-min).
+
+🔮 Phase 4: Interactivity (Optional)
+
+Add interactive.py for draggable zones, live drawing.
+

@@ -4,20 +4,15 @@ from typing import Dict, Optional
 import plotly.express as px
 import pandas as pd
 import logging
-from core.main_login import AuthenticationManager, client_id, client_secret
-from utils.schwab_api_endpoints import SchwabAPIClient
+from utils import init_api
 
 
 def main():
 
-    # Set up logging configuration
-    logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-
-    # Initialize the AuthenticationManager
-    auth_manager = AuthenticationManager(client_id=client_id, client_secret=client_secret)
-
-    # Initialize the SchwabAPIClient with the AuthenticationManager
-    api_client = SchwabAPIClient(authentication_manager=auth_manager)
+    api_client = init_api()
+    if api_client is None:
+        return  # Exit if auth failed
+    
 
     # Define the symbol you want to query
     symbol = "$SPX"  
@@ -34,7 +29,9 @@ def main():
     }
 
     price_history = api_client.get_price_history(symbol=symbol, config=default_config_daily_10years)
-
+    
+    auth_manager = api_client.authentication_manager
+    
     if auth_manager.get_token() and auth_manager.is_token_valid():
         logging.info("Token is valid, proceeding with data retrieval.")
         ranges_high_low, ranges_open_close = store_price_pairs(symbol, price_history)
