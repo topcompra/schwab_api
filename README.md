@@ -95,4 +95,4 @@ if __name__ == "__main__":
 
 ## run script at root (project_folder)
 
-python -m engine.my_script
+python -m engine_or_any_folder_you_want.my_script
