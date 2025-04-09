@@ -19,8 +19,9 @@ def main():
     # === API Call ===
     price_history = client.get_price_history(SYMBOL, CONFIG)
     candles = price_history.get("candles", [])
+    #print(candles[10])
 
-    print(f"Loaded {len(candles)} candles for {SYMBOL}")
+    #print(f"Loaded {len(candles)} candles for {SYMBOL}")
 
     # === Your custom logic below ===
     # process_price_history(candles)
