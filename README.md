@@ -57,6 +57,7 @@ candles = [
 ```
 
 ### 2. Create a new file in `engine/`, for example ( this snippet can be found in engine/base_template.py):
+## Install requirements.txt
 
 #### * Refer to default_config_examples.txt for examples on how to customize CONFIG to other timeframes.
 
