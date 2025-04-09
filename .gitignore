@@ -1,2 +1,5 @@
 .env
 .schwabenv/
+charts/
+data/
+dataset_spx/
