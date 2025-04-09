@@ -1,18 +1,18 @@
 import logging
 
 
-from spx_monthly_seasonality import main as main_file1
-from spx_weekly_seasonality import main as main_file2
-from spx_daily_seasonality import main as main_file3
+from seasonality.spx_monthly_seasonality import main as main_file1
+from seasonality.spx_weekly_seasonality import main as main_file2
+from seasonality.spx_daily_seasonality import main as main_file3
 
 #from backtesting import main as main_file4
 
 
-from main_login import AuthenticationManager, client_id, client_secret
+from core.main_login import AuthenticationManager, client_id, client_secret
 import asyncio
 import time
 import logging
-from functions_timer_decorator import timeit
+from utils.functions_timer_decorator import timeit
 
 
 # Configure logging

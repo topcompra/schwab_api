@@ -1,4 +1,4 @@
-from main_login import AuthenticationManager, client_id, client_secret
+from core.main_login import AuthenticationManager, client_id, client_secret
 import requests
 import logging
 
@@ -82,8 +82,6 @@ def main():
         "needExtendedHoursData": False
     }
 
-    # Call the get_price_history method
-    price_history = api_client.get_price_history(symbol="$SPX", config=config)
     
     return
 

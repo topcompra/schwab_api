@@ -4,13 +4,14 @@ from typing import Dict, Optional
 import plotly.express as px
 import pandas as pd
 import logging
-from main_login import AuthenticationManager, client_id, client_secret
-from schwab_api_endpoints import SchwabAPIClient
+from core.main_login import AuthenticationManager, client_id, client_secret
+from utils.schwab_api_endpoints import SchwabAPIClient
 
 
+# Main function to execute the script
 def main():
 
-    # Set up logging configuration
+        # Set up logging configuration
     logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
     # Initialize the AuthenticationManager
@@ -24,7 +25,6 @@ def main():
 
     # Configuration for price history request This example is for 30 years. 1 daily candlesticks. 
 
-
     default_config_daily_10years = {
         "periodType": "year",
         "period": 10,  # 30 years of data
@@ -35,6 +35,8 @@ def main():
 
     price_history = api_client.get_price_history(symbol=symbol, config=default_config_daily_10years)
 
+
+    # Now you can call the method request_access_token() on the instance
     if auth_manager.get_token() and auth_manager.is_token_valid():
         logging.info("Token is valid, proceeding with data retrieval.")
         ranges_high_low, ranges_open_close = store_price_pairs(symbol, price_history)
@@ -46,6 +48,7 @@ def main():
             logging.warning("No ranges available to plot.")
     else:
         logging.error("Access token is invalid or has expired.")
+
 
 
 
@@ -61,15 +64,18 @@ def store_price_pairs(symbol: str, price_history: dict):
             open_close_pairs.append((candle["open"], candle["close"]))
             high_low_pairs.append((candle["high"], candle["low"]))
         
-        ranges = [(high - low) for high, low in high_low_pairs]
-        ranges_open_close = [(close - open) for open, close in open_close_pairs]
+        ranges = [abs(high - low) for high, low in high_low_pairs]
+        ranges_open_close = [abs(close - open) for open, close in open_close_pairs]
 
         logging.info("Price pairs stored successfully.")
-        logging.info(f"total de dias es {len(ranges)}")
         return ranges, ranges_open_close
     else:
         logging.warning("No data available.")
         return []
+
+
+
+
 
 # Function to calculate std and plot the ranges
 def calculate_std_and_plot(ranges, dataset_label):
@@ -83,19 +89,11 @@ def calculate_std_and_plot(ranges, dataset_label):
 
     df = pd.DataFrame({'ranges': ranges})
 
-    # Debugging: Check range stats
-    logging.info(f"Min: {min(ranges)}, Max: {max(ranges)}, Mean: {mean_range}, Std: {std_range}")
-    
-    fig = px.histogram(df, x='ranges', nbins=20, title=f"STDistribution_comp. of {dataset_label}",
+    fig = px.histogram(df, x='ranges', nbins=20, title=f"STDistribution of {dataset_label}",
                        color_discrete_sequence=['#1f77b4'])
 
     counts, bins = np.histogram(ranges, bins=20)
     total_counts = len(ranges)
-
-    # Debugging: Check bins and counts
-    print(f"Bins: {bins}")
-    print(f"Counts: {counts}")
-    print(f"Total days: {total_counts}, Total counts sum: {sum(counts)}")
 
     hover_text = []
     labels = []  
@@ -128,8 +126,5 @@ def calculate_std_and_plot(ranges, dataset_label):
     fig.show()
 
 
-
-
-# Main function to execute the script
 if __name__ == "__main__":
     main()
